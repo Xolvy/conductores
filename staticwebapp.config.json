@@ -5,7 +5,7 @@
       "rewrite": "/admin/index.html"
     },
     {
-      "route": "/diagnostico*",
+      "route": "/diagnostico*", 
       "rewrite": "/diagnostico/index.html"
     },
     {
@@ -17,8 +17,20 @@
       "rewrite": "/auth-test/index.html"
     },
     {
-      "route": "/test-*",
-      "rewrite": "/test-*/index.html"
+      "route": "/test-admin-sdk*",
+      "rewrite": "/test-admin-sdk/index.html"
+    },
+    {
+      "route": "/test-conductor*",
+      "rewrite": "/test-conductor/index.html"
+    },
+    {
+      "route": "/test-main*",
+      "rewrite": "/test-main/index.html"
+    },
+    {
+      "route": "/test-simple*",
+      "rewrite": "/test-simple/index.html"
     }
   ],
   "navigationFallback": {
