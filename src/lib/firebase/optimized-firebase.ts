@@ -1,7 +1,6 @@
 // 🔥 FIREBASE OPTIMIZADO CON EXTENSIONES VS CODE 2025
-import { initializeApp, getApps, FirebaseApp } from "firebase/app";
+import { FirebaseApp } from "firebase/app";
 import {
-  getFirestore,
   Firestore,
   collection,
   doc,
@@ -9,18 +8,15 @@ import {
   getDoc,
   addDoc,
   updateDoc,
-  deleteDoc,
   onSnapshot,
   query,
   where,
   orderBy,
-  limit,
   DocumentData,
   QuerySnapshot,
   DocumentSnapshot,
 } from "firebase/firestore";
 import {
-  getAuth,
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,

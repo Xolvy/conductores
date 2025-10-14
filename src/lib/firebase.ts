@@ -16,7 +16,6 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
   getFirestore,
-  connectFirestoreEmulator,
   doc,
   collection,
   writeBatch,
@@ -24,15 +23,12 @@ import {
 } from "firebase/firestore";
 import {
   getAuth,
-  connectAuthEmulator,
   signInAnonymously as firebaseSignInAnonymously,
   onAuthStateChanged as firebaseOnAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   RecaptchaVerifier,
   signInWithPhoneNumber,
-  PhoneAuthProvider,
-  signInWithCredential,
   signOut,
 } from "firebase/auth";
 

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import AdminAuthService from "../../../../lib/admin-auth";
 import { getProjectInfo } from "../../../../lib/firebase-admin";
 

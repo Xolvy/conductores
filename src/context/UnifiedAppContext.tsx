@@ -4,6 +4,7 @@ import React, {
   useContext,
   useReducer,
   useEffect,
+  useMemo,
   ReactNode,
 } from "react";
 import {
@@ -211,6 +212,48 @@ const initialState: AppState = {
   },
 };
 
+// ===== REDUCER HELPERS =====
+// ✅ OPTIMIZACIÓN: Helper functions para eliminar código duplicado
+const createEntityHandlers = <T extends { id: string } | { uid: string }>(
+  stateKey: keyof AppState,
+  getKey: (entity: T) => string = (entity) => 'id' in entity ? entity.id : (entity as any).uid
+) => ({
+  set: (state: AppState, payload: Record<string, T>) => ({
+    ...state,
+    [stateKey]: payload,
+  }),
+  add: (state: AppState, entity: T) => ({
+    ...state,
+    [stateKey]: {
+      ...(state[stateKey] as unknown as Record<string, T>),
+      [getKey(entity)]: entity,
+    },
+  }),
+  update: (state: AppState, entity: T) => ({
+    ...state,
+    [stateKey]: {
+      ...(state[stateKey] as unknown as Record<string, T>),
+      [getKey(entity)]: entity,
+    },
+  }),
+  delete: (state: AppState, entityId: string) => {
+    const { [entityId]: deleted, ...remaining } = state[stateKey] as unknown as Record<string, T>;
+    return {
+      ...state,
+      [stateKey]: remaining,
+    };
+  },
+});
+
+// ===== ENTITY HANDLERS =====
+const territoryHandlers = createEntityHandlers<Territory>('territories');
+const blockHandlers = createEntityHandlers<Block>('blocks');
+const addressHandlers = createEntityHandlers<Address>('addresses');
+const phoneHandlers = createEntityHandlers<PhoneNumber>('phoneNumbers');
+const userHandlers = createEntityHandlers<AppUser>('users', (user) => user.uid);
+const conductorHandlers = createEntityHandlers<Conductor>('conductores');
+const assignmentHandlers = createEntityHandlers<Assignment>('assignments');
+
 // ===== REDUCER =====
 function appReducer(state: AppState, action: AppAction): AppState {
   switch (action.type) {
@@ -223,89 +266,45 @@ function appReducer(state: AppState, action: AppAction): AppState {
     case "SET_APP_USER":
       return { ...state, currentUser: action.payload || undefined };
 
-    // Territories
+    // Territories - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_TERRITORIES":
-      return { ...state, territories: action.payload };
+      return territoryHandlers.set(state, action.payload);
     case "ADD_TERRITORY":
-      return {
-        ...state,
-        territories: {
-          ...state.territories,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return territoryHandlers.add(state, action.payload);
     case "UPDATE_TERRITORY":
-      return {
-        ...state,
-        territories: {
-          ...state.territories,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return territoryHandlers.update(state, action.payload);
     case "DELETE_TERRITORY":
-      const { [action.payload]: deletedTerritory, ...remainingTerritories } =
-        state.territories;
-      return { ...state, territories: remainingTerritories };
+      return territoryHandlers.delete(state, action.payload);
 
-    // Blocks
+    // Blocks - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_BLOCKS":
-      return { ...state, blocks: action.payload };
+      return blockHandlers.set(state, action.payload);
     case "ADD_BLOCK":
-      return {
-        ...state,
-        blocks: { ...state.blocks, [action.payload.id]: action.payload },
-      };
+      return blockHandlers.add(state, action.payload);
     case "UPDATE_BLOCK":
-      return {
-        ...state,
-        blocks: { ...state.blocks, [action.payload.id]: action.payload },
-      };
+      return blockHandlers.update(state, action.payload);
     case "DELETE_BLOCK":
-      const { [action.payload]: deletedBlock, ...remainingBlocks } =
-        state.blocks;
-      return { ...state, blocks: remainingBlocks };
+      return blockHandlers.delete(state, action.payload);
 
-    // Addresses
+    // Addresses - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_ADDRESSES":
-      return { ...state, addresses: action.payload };
+      return addressHandlers.set(state, action.payload);
     case "ADD_ADDRESS":
-      return {
-        ...state,
-        addresses: { ...state.addresses, [action.payload.id]: action.payload },
-      };
+      return addressHandlers.add(state, action.payload);
     case "UPDATE_ADDRESS":
-      return {
-        ...state,
-        addresses: { ...state.addresses, [action.payload.id]: action.payload },
-      };
+      return addressHandlers.update(state, action.payload);
     case "DELETE_ADDRESS":
-      const { [action.payload]: deletedAddress, ...remainingAddresses } =
-        state.addresses;
-      return { ...state, addresses: remainingAddresses };
+      return addressHandlers.delete(state, action.payload);
 
-    // Phone Numbers
+    // Phone Numbers - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_PHONES":
-      return { ...state, phoneNumbers: action.payload };
+      return phoneHandlers.set(state, action.payload);
     case "ADD_PHONE":
-      return {
-        ...state,
-        phoneNumbers: {
-          ...state.phoneNumbers,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return phoneHandlers.add(state, action.payload);
     case "UPDATE_PHONE":
-      return {
-        ...state,
-        phoneNumbers: {
-          ...state.phoneNumbers,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return phoneHandlers.update(state, action.payload);
     case "DELETE_PHONE":
-      const { [action.payload]: deletedPhone, ...remainingPhones } =
-        state.phoneNumbers;
-      return { ...state, phoneNumbers: remainingPhones };
+      return phoneHandlers.delete(state, action.payload);
     case "BULK_UPDATE_PHONES":
       const phoneUpdates = action.payload.reduce((acc, phone) => {
         acc[phone.id] = phone;
@@ -316,70 +315,35 @@ function appReducer(state: AppState, action: AppAction): AppState {
         phoneNumbers: { ...state.phoneNumbers, ...phoneUpdates },
       };
 
-    // Users
+    // Users - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_USERS":
-      return { ...state, users: action.payload };
+      return userHandlers.set(state, action.payload);
     case "ADD_APP_USER":
-      return {
-        ...state,
-        users: { ...state.users, [action.payload.uid]: action.payload },
-      };
+      return userHandlers.add(state, action.payload);
     case "UPDATE_APP_USER":
-      return {
-        ...state,
-        users: { ...state.users, [action.payload.uid]: action.payload },
-      };
+      return userHandlers.update(state, action.payload);
     case "DELETE_APP_USER":
-      const { [action.payload]: deletedUser, ...remainingUsers } = state.users;
-      return { ...state, users: remainingUsers };
+      return userHandlers.delete(state, action.payload);
 
-    // Conductores
+    // Conductores - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_CONDUCTORES":
-      return { ...state, conductores: action.payload };
+      return conductorHandlers.set(state, action.payload);
     case "ADD_CONDUCTOR":
-      return {
-        ...state,
-        conductores: {
-          ...state.conductores,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return conductorHandlers.add(state, action.payload);
     case "UPDATE_CONDUCTOR":
-      return {
-        ...state,
-        conductores: {
-          ...state.conductores,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return conductorHandlers.update(state, action.payload);
     case "DELETE_CONDUCTOR":
-      const { [action.payload]: deletedConductor, ...remainingConductores } =
-        state.conductores;
-      return { ...state, conductores: remainingConductores };
+      return conductorHandlers.delete(state, action.payload);
 
-    // Assignments
+    // Assignments - ✅ OPTIMIZADO: Usa handlers reutilizables
     case "SET_ASSIGNMENTS":
-      return { ...state, assignments: action.payload };
+      return assignmentHandlers.set(state, action.payload);
     case "ADD_ASSIGNMENT":
-      return {
-        ...state,
-        assignments: {
-          ...state.assignments,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return assignmentHandlers.add(state, action.payload);
     case "UPDATE_ASSIGNMENT":
-      return {
-        ...state,
-        assignments: {
-          ...state.assignments,
-          [action.payload.id]: action.payload,
-        },
-      };
+      return assignmentHandlers.update(state, action.payload);
     case "DELETE_ASSIGNMENT":
-      const { [action.payload]: deletedAssignment, ...remainingAssignments } =
-        state.assignments;
-      return { ...state, assignments: remainingAssignments };
+      return assignmentHandlers.delete(state, action.payload);
 
     // UI State
     case "SET_SELECTED_TERRITORY":
@@ -1480,57 +1444,95 @@ export function UnifiedAppProvider({ children }: AppProviderProps) {
     }
   };
 
-  const value: AppContextValue = {
-    state,
+  // ✅ OPTIMIZACIÓN: Memoizar el value object para evitar re-renders innecesarios
+  const value: AppContextValue = useMemo(
+    () => ({
+      state,
 
-    // Auth
-    signInWithPhone,
-    verifyCode,
-    signOut,
-    signInAsSuperAdmin,
-    signInAsConductor,
-    checkUserPermission,
+      // Auth
+      signInWithPhone,
+      verifyCode,
+      signOut,
+      signInAsSuperAdmin,
+      signInAsConductor,
+      checkUserPermission,
 
-    // Territories
-    createTerritory,
-    updateTerritory,
-    deleteTerritory,
+      // Territories
+      createTerritory,
+      updateTerritory,
+      deleteTerritory,
 
-    // Blocks
-    createBlock,
-    updateBlock,
-    deleteBlock,
+      // Blocks
+      createBlock,
+      updateBlock,
+      deleteBlock,
 
-    // Addresses
-    createAddress,
-    updateAddress,
-    deleteAddress,
+      // Addresses
+      createAddress,
+      updateAddress,
+      deleteAddress,
 
-    // Phone Numbers
-    createPhone,
-    updatePhone,
-    deletePhone,
-    bulkImportPhones,
+      // Phone Numbers
+      createPhone,
+      updatePhone,
+      deletePhone,
+      bulkImportPhones,
 
-    // Users
-    createUser,
-    updateUser,
-    deleteUser,
-    promoteUser,
-    updateUserCredentials,
+      // Users
+      createUser,
+      updateUser,
+      deleteUser,
+      promoteUser,
+      updateUserCredentials,
 
-    // Assignments
-    createAssignment,
-    updateAssignment,
-    deleteAssignment,
-    returnAssignment,
+      // Assignments
+      createAssignment,
+      updateAssignment,
+      deleteAssignment,
+      returnAssignment,
 
-    // Utilities
-    getStats,
-    refreshData,
-    exportData,
-    logSystemEvent,
-  };
+      // Utilities
+      getStats,
+      refreshData,
+      exportData,
+      logSystemEvent,
+    }),
+    [
+      state,
+      signInWithPhone,
+      verifyCode,
+      signOut,
+      signInAsSuperAdmin,
+      signInAsConductor,
+      checkUserPermission,
+      createTerritory,
+      updateTerritory,
+      deleteTerritory,
+      createBlock,
+      updateBlock,
+      deleteBlock,
+      createAddress,
+      updateAddress,
+      deleteAddress,
+      createPhone,
+      updatePhone,
+      deletePhone,
+      bulkImportPhones,
+      createUser,
+      updateUser,
+      deleteUser,
+      promoteUser,
+      updateUserCredentials,
+      createAssignment,
+      updateAssignment,
+      deleteAssignment,
+      returnAssignment,
+      getStats,
+      refreshData,
+      exportData,
+      logSystemEvent,
+    ]
+  );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
