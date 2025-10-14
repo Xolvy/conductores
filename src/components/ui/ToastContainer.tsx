@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X, AlertTriangle, Info } from 'lucide-react';
 import { ToastMessage } from '@/types';
 
-interface ToastProps {
-  toast: ToastMessage;
-  onRemove: (id: string) => void;
+interface ReadonlyToastProps {
+  readonly toast: ToastMessage;
+  readonly onRemove: (id: string) => void;
 }
 
-function Toast({ toast, onRemove }: ToastProps) {
+function Toast({ toast, onRemove }: ReadonlyToastProps) {
   const icons = {
     success: Check,
     error: X,
@@ -48,12 +48,12 @@ function Toast({ toast, onRemove }: ToastProps) {
   );
 }
 
-interface ToastContainerProps {
-  toasts: ToastMessage[];
-  onRemove: (id: string) => void;
+interface ReadonlyToastContainerProps {
+  readonly toasts: readonly ToastMessage[];
+  readonly onRemove: (id: string) => void;
 }
 
-export function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
+export function ToastContainer({ toasts, onRemove }: ReadonlyToastContainerProps) {
   return (
     <div className="toast-container">
       {toasts.map((toast) => (

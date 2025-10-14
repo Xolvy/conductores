@@ -11,14 +11,14 @@ import { AppUser } from "../types/user";
 
 export type AppMode = "login" | "admin" | "conductor";
 
-interface RoleBasedAppProps {
-  onShowToast?: (
+interface ReadonlyRoleBasedAppProps {
+  readonly onShowToast?: (
     message: string,
     type: "success" | "error" | "warning"
   ) => void;
 }
 
-const RoleBasedApp: React.FC<RoleBasedAppProps> = ({ onShowToast }) => {
+const RoleBasedApp: React.FC<ReadonlyRoleBasedAppProps> = ({ onShowToast }) => {
   const [currentMode, setCurrentMode] = useState<AppMode>("login");
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [selectedConductor, setSelectedConductor] = useState<AppUser | null>(

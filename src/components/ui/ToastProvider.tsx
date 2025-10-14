@@ -30,11 +30,11 @@ export const useToast = (): ToastContextType => {
   return context;
 };
 
-interface ToastProviderProps {
-  children: ReactNode;
+interface ReadonlyToastProviderProps {
+  readonly children: ReactNode;
 }
 
-export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
+export const ToastProvider: React.FC<ReadonlyToastProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   const generateId = (): string => {

@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { AlertTriangle, Wifi, WifiOff, RefreshCw } from "lucide-react";
 import { isFirebaseEnabled } from "@/lib/firebase";
 
-interface ConnectionStatusProps {
-  onRetry?: () => void;
+interface ReadonlyConnectionStatusProps {
+  readonly onRetry?: () => void;
 }
 
-export default function ConnectionStatus({ onRetry }: ConnectionStatusProps) {
+export default function ConnectionStatus({ onRetry }: ReadonlyConnectionStatusProps) {
   const [connectionStatus, setConnectionStatus] = useState<
     "checking" | "connected" | "blocked" | "offline" | "error"
   >("checking");

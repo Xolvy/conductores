@@ -14,12 +14,12 @@ export interface Toast {
   };
 }
 
-interface ToastItemProps {
-  toast: Toast;
-  onRemove: (id: string) => void;
+interface ReadonlyToastItemProps {
+  readonly toast: Toast;
+  readonly onRemove: (id: string) => void;
 }
 
-const ToastItem: React.FC<ToastItemProps> = ({ toast, onRemove }) => {
+const ToastItem: React.FC<ReadonlyToastItemProps> = ({ toast, onRemove }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
 
@@ -142,10 +142,10 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onRemove }) => {
   );
 };
 
-interface ToastContainerProps {
-  toasts: Toast[];
-  onRemove: (id: string) => void;
-  position?:
+interface ReadonlyToastContainerProps {
+  readonly toasts: readonly Toast[];
+  readonly onRemove: (id: string) => void;
+  readonly position?:
     | "top-right"
     | "top-left"
     | "bottom-right"
@@ -154,7 +154,7 @@ interface ToastContainerProps {
     | "bottom-center";
 }
 
-const ToastContainerModern: React.FC<ToastContainerProps> = ({
+const ToastContainerModern: React.FC<ReadonlyToastContainerProps> = ({
   toasts,
   onRemove,
   position = "top-right",
