@@ -1,17 +1,18 @@
 {
-  "name": "Sistema de Territorios JW",
-  "short_name": "Territorios JW",
-  "description": "Gestión moderna de territorios para los Testigos de Jehová",
+  "name": "App Conductores - Sistema de Gestión Territorial",
+  "short_name": "App Conductores",
+  "description": "Sistema completo de gestión de territorios y predicación telefónica optimizado para Azure Static Web Apps",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#ffffff",
   "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
   "scope": "/",
-  "categories": ["productivity", "utilities"],
+  "categories": ["productivity", "utilities", "business"],
   "lang": "es",
   "dir": "ltr",
   "prefer_related_applications": false,
+  "edge_side_includes": false,
   "icons": [
     {
       "src": "/favicon.ico",

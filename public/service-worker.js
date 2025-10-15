@@ -1,21 +1,55 @@
-// Service Worker para funcionamiento offline - Territorios JW
-const CACHE_NAME = "territorios-app-v3";
-const urlsToCache = ["/", "/admin", "/diagnostico", "/manifest.json"];
+// 🚀 Service Worker optimizado para Azure Static Web Apps
+const CACHE_NAME = "app-conductores-azure-v1";
+const STATIC_CACHE_NAME = "static-assets-v1";
+const API_CACHE_NAME = "api-cache-v1";
 
-// Instalar Service Worker y cachear recursos
-self.addEventListener("install", function (event) {
-  console.log("🔄 Service Worker: Instalando...");
+// 📦 Recursos principales para cachear
+const urlsToCache = [
+  "/",
+  "/admin", 
+  "/diagnostico", 
+  "/enhanced",
+  "/manifest.json",
+  "/offline.html", // Página offline personalizada
+];
+
+// 🎯 Recursos estáticos para cache a largo plazo
+const staticAssets = [
+  "/favicon.ico",
+  "/icon-192.png",
+  "/icon-512.png"
+];
+
+// 🌐 APIs que pueden ser cacheadas temporalmente
+const apiEndpoints = [
+  "/api/health",
+  "/api/azure-info"
+];
+
+// 🔧 Instalar Service Worker con estrategia multi-cache
+self.addEventListener("install", async function (event) {
+  console.log("🔄 Azure SWA Service Worker: Instalando...");
+  
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) => {
-        console.log("✅ Service Worker: Cache creado");
+    Promise.all([
+      // Cache principal
+      caches.open(CACHE_NAME).then(cache => {
+        console.log("✅ Cache principal creado");
         return cache.addAll(urlsToCache);
+      }),
+      // Cache de assets estáticos
+      caches.open(STATIC_CACHE_NAME).then(cache => {
+        console.log("✅ Cache estático creado");
+        return cache.addAll(staticAssets);
+      }),
+      // Preparar cache de API
+      caches.open(API_CACHE_NAME).then(() => {
+        console.log("✅ Cache de API preparado");
       })
-      .then(() => {
-        console.log("✅ Service Worker: Recursos cacheados");
-        self.skipWaiting();
-      })
+    ]).then(() => {
+      console.log("✅ Service Worker: Todos los recursos cacheados");
+      self.skipWaiting();
+    })
   );
 });
 

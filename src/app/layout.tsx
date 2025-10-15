@@ -13,20 +13,39 @@ import BrowserDiagnostic from "@/components/debug/BrowserDiagnostic";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sistema de Territorios JW",
-  description: "Gestión moderna de territorios para los Testigos de Jehová",
+  title: "App Conductores - Sistema de Gestión Territorial",
+  description: "Sistema completo de gestión de territorios y predicación telefónica optimizado para Azure Static Web Apps. Interfaz moderna, funciones avanzadas de exportación y análisis inteligente.",
   keywords: [
-    "territorios",
-    "JW",
-    "testigos",
-    "jehová",
-    "predicación",
-    "gestión",
+    "app conductores",
+    "gestión territorial", 
+    "predicación telefónica",
+    "azure static web apps",
+    "next.js",
+    "sistema moderno",
+    "exportación datos",
+    "análisis inteligente"
   ],
-  authors: [{ name: "Sistema de Territorios" }],
+  authors: [{ name: "App Conductores Team" }],
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
+    apple: "/icon-192.png",
+    shortcut: "/favicon.ico"
+  },
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  robots: "index, follow",
+  openGraph: {
+    title: "App Conductores - Sistema de Gestión Territorial",
+    description: "Sistema completo de gestión de territorios optimizado para Azure SWA",
+    url: "https://lively-hill-009fd0b0f.2.azurestaticapps.net",
+    siteName: "App Conductores",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "App Conductores - Sistema de Gestión Territorial",
+    description: "Sistema completo de gestión territorial con funciones avanzadas",
   },
 };
 

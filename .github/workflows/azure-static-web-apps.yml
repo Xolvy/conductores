@@ -57,9 +57,13 @@ jobs:
       - name: 📋 Verify Build Output
         run: |
           echo "📊 Build statistics:"
-          ls -la dist/
-          echo "📁 Total files: $(find dist/ -type f | wc -l)"
-          echo "💾 Total size: $(du -sh dist/)"
+          ls -la out/
+          echo "📁 Total files: $(find out/ -type f | wc -l)"
+          echo "💾 Total size: $(du -sh out/)"
+          echo "🔍 Key files verification:"
+          test -f out/index.html && echo "✅ Homepage generated" || echo "❌ Homepage missing"
+          test -f out/_next/static && echo "✅ Static assets present" || echo "❌ Static assets missing"
+          test -f out/admin/index.html && echo "✅ Admin page generated" || echo "❌ Admin page missing"
 
       # 🚀 Deploy to Azure Static Web Apps
       - name: 🌐 Deploy to Azure Static Web Apps
@@ -72,10 +76,13 @@ jobs:
           # Application configuration
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
-          output_location: "dist" # Built app content directory
+          output_location: "out" # Built app content directory (updated for Next.js export)
           # Build configuration
           app_build_command: "npm run build"
           skip_app_build: true # We already built above
+          # Production optimizations
+          production_branch: "main"
+          skip_api_build: true
 
       # ✅ Post-deployment verification
       - name: 🔍 Post-Deploy Verification
