@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
+const path = require("path");
 
 const nextConfig = {
   // 🚀 Configuración optimizada para Azure Static Web Apps
@@ -12,15 +12,15 @@ const nextConfig = {
   // 🖼️ Optimización de imágenes para Azure SWA
   images: {
     unoptimized: true,
-    loader: 'custom',
-    loaderFile: './src/utils/azure-image-loader.js',
+    loader: "custom",
+    loaderFile: "./src/utils/azure-image-loader.js",
     domains: [
-      "firebasestorage.googleapis.com", 
+      "firebasestorage.googleapis.com",
       "conductores-9oct.appspot.com",
       "lively-hill-009fd0b0f.2.azurestaticapps.net",
-      "*.azurestaticapps.net"
+      "*.azurestaticapps.net",
     ],
-    formats: ['image/webp', 'image/avif'],
+    formats: ["image/webp", "image/avif"],
   },
 
   // 🔧 Configuración experimental para Azure SWA
@@ -28,13 +28,13 @@ const nextConfig = {
     // Mejora el rendimiento en Azure
     optimizeCss: true,
     // Optimizaciones específicas para SWA
-    esmExternals: 'loose',
+    esmExternals: "loose",
   },
 
   // ⚡ Configuración de compilación para Azure
   compiler: {
     // Optimizaciones adicionales
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
   },
 
   // 📦 Paquetes externos del servidor (movido desde experimental)
@@ -55,15 +55,15 @@ const nextConfig = {
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
+            name: "vendors",
+            chunks: "all",
           },
           common: {
             minChunks: 2,
-            chunks: 'all',
+            chunks: "all",
             enforce: true,
-          }
-        }
+          },
+        },
       };
 
       // Optimizaciones adicionales para Azure
@@ -74,7 +74,7 @@ const nextConfig = {
     // Resolver aliases para mejor compatibilidad
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     };
 
     return config;

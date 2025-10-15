@@ -14,29 +14,31 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "App Conductores - Sistema de Gestión Territorial",
-  description: "Sistema completo de gestión de territorios y predicación telefónica optimizado para Azure Static Web Apps. Interfaz moderna, funciones avanzadas de exportación y análisis inteligente.",
+  description:
+    "Sistema completo de gestión de territorios y predicación telefónica optimizado para Azure Static Web Apps. Interfaz moderna, funciones avanzadas de exportación y análisis inteligente.",
   keywords: [
     "app conductores",
-    "gestión territorial", 
+    "gestión territorial",
     "predicación telefónica",
     "azure static web apps",
     "next.js",
     "sistema moderno",
     "exportación datos",
-    "análisis inteligente"
+    "análisis inteligente",
   ],
   authors: [{ name: "App Conductores Team" }],
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
     apple: "/icon-192.png",
-    shortcut: "/favicon.ico"
+    shortcut: "/favicon.ico",
   },
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "App Conductores - Sistema de Gestión Territorial",
-    description: "Sistema completo de gestión de territorios optimizado para Azure SWA",
+    description:
+      "Sistema completo de gestión de territorios optimizado para Azure SWA",
     url: "https://lively-hill-009fd0b0f.2.azurestaticapps.net",
     siteName: "App Conductores",
     locale: "es_ES",
@@ -45,7 +47,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "App Conductores - Sistema de Gestión Territorial",
-    description: "Sistema completo de gestión territorial con funciones avanzadas",
+    description:
+      "Sistema completo de gestión territorial con funciones avanzadas",
   },
 };
 

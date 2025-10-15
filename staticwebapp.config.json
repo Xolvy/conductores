@@ -75,7 +75,10 @@
   },
   "trailingSlash": "auto",
   "forwardingGateway": {
-    "allowedForwardedHosts": ["app-conductores.azurestaticapps.net", "lively-hill-009fd0b0f.2.azurestaticapps.net"]
+    "allowedForwardedHosts": [
+      "app-conductores.azurestaticapps.net",
+      "lively-hill-009fd0b0f.2.azurestaticapps.net"
+    ]
   },
   "networking": {
     "allowedIpRanges": []

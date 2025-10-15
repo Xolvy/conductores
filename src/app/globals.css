@@ -8,13 +8,13 @@
     scroll-behavior: smooth;
     font-display: swap;
   }
-  
+
   body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   /* Preload critical resources */
   .preload-critical {
     content-visibility: auto;

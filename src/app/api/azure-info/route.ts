@@ -21,48 +21,49 @@ export async function GET(request: NextRequest) {
         deployment: {
           method: "GitHub Actions",
           branch: "main",
-          autoDeployment: true
-        }
+          autoDeployment: true,
+        },
       },
-      
+
       // ⚡ Performance optimizations
       performance: {
         staticGeneration: true,
         edgeCaching: true,
         compressionEnabled: true,
-        bundleOptimization: true
+        bundleOptimization: true,
       },
-      
+
       // 🛡️ Security features
       security: {
         httpsOnly: true,
         securityHeaders: true,
         corsEnabled: true,
-        csrfProtection: true
+        csrfProtection: true,
       },
-      
+
       // 📊 Monitoring
       monitoring: {
         healthcheck: "/api/health",
         metricsEndpoint: "/api/azure-info",
-        loggingEnabled: true
+        loggingEnabled: true,
       },
-      
+
       // 📱 PWA capabilities
       pwa: {
         serviceWorkerEnabled: true,
         offlineCapable: true,
         installable: true,
-        manifestUrl: "/manifest.json"
+        manifestUrl: "/manifest.json",
       },
-      
+
       // 🌐 URLs and endpoints
       urls: {
         production: "https://lively-hill-009fd0b0f.2.azurestaticapps.net",
         api: "https://lively-hill-009fd0b0f.2.azurestaticapps.net/api",
-        healthcheck: "https://lively-hill-009fd0b0f.2.azurestaticapps.net/api/health"
+        healthcheck:
+          "https://lively-hill-009fd0b0f.2.azurestaticapps.net/api/health",
       },
-      
+
       // 📈 Build info
       build: {
         framework: "Next.js 15.5.2",
@@ -73,11 +74,11 @@ export async function GET(request: NextRequest) {
           "Image Optimization",
           "Code Splitting",
           "Tree Shaking",
-          "Minification"
-        ]
+          "Minification",
+        ],
       },
-      
-      timestamp: new Date().toISOString()
+
+      timestamp: new Date().toISOString(),
     };
 
     return NextResponse.json(azureInfo, {
@@ -86,24 +87,26 @@ export async function GET(request: NextRequest) {
         "Content-Type": "application/json",
         "Cache-Control": "public, max-age=3600", // Cache por 1 hora
         "X-Azure-SWA": "optimized",
-        "X-Content-Type-Options": "nosniff"
-      }
+        "X-Content-Type-Options": "nosniff",
+      },
     });
-
   } catch (error) {
     console.error("❌ Error in Azure SWA Info API:", error);
-    
-    return NextResponse.json({
-      error: "Internal Server Error",
-      message: "Error retrieving Azure SWA information",
-      timestamp: new Date().toISOString()
-    }, {
-      status: 500,
-      headers: {
-        "Content-Type": "application/json",
-        "X-Error": "azure-swa-info-failed"
+
+    return NextResponse.json(
+      {
+        error: "Internal Server Error",
+        message: "Error retrieving Azure SWA information",
+        timestamp: new Date().toISOString(),
+      },
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+          "X-Error": "azure-swa-info-failed",
+        },
       }
-    });
+    );
   }
 }
 
@@ -111,14 +114,17 @@ export async function GET(request: NextRequest) {
  * 📋 GET method para obtener información completa sobre el deployment Azure
  */
 export async function POST(request: NextRequest) {
-  return NextResponse.json({
-    message: "Use GET method to retrieve Azure SWA information",
-    availableEndpoints: [
-      "/api/azure-info (GET) - Azure SWA information",
-      "/api/health (GET) - Health check",
-      "/api/admin/firebase-status (GET/POST) - Firebase status"
-    ]
-  }, { status: 405 });
+  return NextResponse.json(
+    {
+      message: "Use GET method to retrieve Azure SWA information",
+      availableEndpoints: [
+        "/api/azure-info (GET) - Azure SWA information",
+        "/api/health (GET) - Health check",
+        "/api/admin/firebase-status (GET/POST) - Firebase status",
+      ],
+    },
+    { status: 405 }
+  );
 }
 
 export async function OPTIONS(request: NextRequest) {
@@ -127,7 +133,7 @@ export async function OPTIONS(request: NextRequest) {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type"
-    }
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
   });
 }
