@@ -10,17 +10,17 @@ export const BrowserDiagnostic: React.FC = () => {
   // Escuchar mensajes para toggle del diagnóstico
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      if (event.data.type === 'TOGGLE_BROWSER_DIAGNOSTIC') {
-        setIsMinimized(prev => !prev);
+      if (event.data.type === "TOGGLE_BROWSER_DIAGNOSTIC") {
+        setIsMinimized((prev) => !prev);
         // Activar flag global si no está activado
-        if (typeof window !== 'undefined') {
+        if (typeof window !== "undefined") {
           (window as any).__SHOW_BROWSER_DIAGNOSTIC__ = true;
         }
       }
     };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
   }, []);
 
   if (!isReady || !compatibility) {
@@ -28,10 +28,12 @@ export const BrowserDiagnostic: React.FC = () => {
   }
 
   // Solo mostrar si hay problemas críticos o si se activa manualmente
-  const hasCriticalIssues = !compatibility.hasAbortController || !compatibility.hasLocalStorage;
-  const isDiagnosticEnabled = typeof window !== 'undefined' && 
+  const hasCriticalIssues =
+    !compatibility.hasAbortController || !compatibility.hasLocalStorage;
+  const isDiagnosticEnabled =
+    typeof window !== "undefined" &&
     (window as any).__SHOW_BROWSER_DIAGNOSTIC__ === true;
-  
+
   const showDiagnostic = hasCriticalIssues || isDiagnosticEnabled;
 
   if (!showDiagnostic) {

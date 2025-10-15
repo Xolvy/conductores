@@ -2,7 +2,7 @@
 
 import React from "react";
 
-// Componente temporalmente deshabilitado para evitar errores de tipos incompatibles  
+// Componente temporalmente deshabilitado para evitar errores de tipos incompatibles
 // PENDIENTE: Migrar este componente para usar UnifiedAppContext correctamente
 
 export default function EnhancedAdminPanelNew({
@@ -22,9 +22,7 @@ export default function EnhancedAdminPanelNew({
             <p>
               Necesita ser migrado para ser compatible con el UnifiedAppContext
             </p>
-            <p>
-              Usa el panel de administración principal mientras tanto.
-            </p>
+            <p>Usa el panel de administración principal mientras tanto.</p>
           </div>
           {onLogout && (
             <button

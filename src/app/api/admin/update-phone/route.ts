@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import AdminAuthService from "../../../../lib/admin-auth";
 
 // Configuración para exportación estática
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 /**
  * API route para actualizar números de teléfono en Firebase Auth

@@ -5,6 +5,7 @@
 ## 🤝 Cómo Contribuir
 
 ### 1. Fork y Clone
+
 ```bash
 git fork https://github.com/OWNER/app-conductores.git
 git clone https://github.com/TU_USUARIO/app-conductores.git
@@ -12,28 +13,33 @@ cd app-conductores
 ```
 
 ### 2. Setup Local
+
 ```bash
 npm install
 npm run dev
 ```
 
 ### 3. Crear Feature Branch
+
 ```bash
 git checkout -b feature/nueva-funcionalidad
 ```
 
 ### 4. Desarrollo
+
 - ✅ Seguir las convenciones TypeScript
 - ✅ Mantener tests actualizados
 - ✅ Documentar cambios importantes
 
 ### 5. Testing
+
 ```bash
 npm run build     # Verificar build
 npm run lint      # Verificar linting
 ```
 
 ### 6. Commit y Push
+
 ```bash
 git add .
 git commit -m "feat: descripción clara del cambio"
@@ -41,6 +47,7 @@ git push origin feature/nueva-funcionalidad
 ```
 
 ### 7. Pull Request
+
 - Describe claramente los cambios
 - Incluye screenshots si es UI
 - Referencias a issues relacionados
@@ -48,12 +55,14 @@ git push origin feature/nueva-funcionalidad
 ## 📋 Guidelines
 
 ### **Naming Conventions**
+
 - **Components**: PascalCase (`TerritoryManager.tsx`)
 - **Functions**: camelCase (`calculateTerritory()`)
 - **Files**: kebab-case (`territory-utils.ts`)
 - **Constants**: UPPER_CASE (`API_ENDPOINTS`)
 
 ### **Commit Messages**
+
 ```
 feat: nueva funcionalidad
 fix: corrección de bug
@@ -65,6 +74,7 @@ chore: tareas de mantenimiento
 ```
 
 ### **Branch Strategy**
+
 - `main` - Producción estable
 - `develop` - Desarrollo activo
 - `feature/` - Nuevas funcionalidades
@@ -74,18 +84,21 @@ chore: tareas de mantenimiento
 ## 🚀 Areas de Contribución
 
 ### **🎯 Funcionalidades Prioritarias**
+
 - [ ] Sistema de notificaciones
 - [ ] Mejoras de performance
 - [ ] Tests automatizados
 - [ ] Internacionalización (i18n)
 
 ### **🎨 UI/UX Improvements**
+
 - [ ] Themes personalizables
 - [ ] Animaciones fluidas
 - [ ] Responsive design
 - [ ] Accessibility (a11y)
 
 ### **🔧 Technical Debt**
+
 - [ ] Refactoring de componentes
 - [ ] Optimización de bundles
 - [ ] Documentation updates

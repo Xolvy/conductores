@@ -1,6 +1,7 @@
 # 🚀 Guía de Deployment a Azure Static Web Apps
 
 ## ✅ **Estado Actual:**
+
 - ✅ Repositorio Git inicializado con commit inicial
 - ✅ Azure SWA CLI instalado (v2.0.7)
 - ✅ Configuración SWA (`staticwebapp.config.json`) creada
@@ -10,6 +11,7 @@
 ## 🎯 **Próximos Pasos:**
 
 ### **Paso 1: Crear repositorio en GitHub**
+
 1. Ve a [GitHub.com](https://github.com) y haz login
 2. Clic en "New repository" (botón verde)
 3. Nombre: `app-conductores`
@@ -19,6 +21,7 @@
 7. Clic "Create repository"
 
 ### **Paso 2: Conectar repositorio local con GitHub**
+
 ```bash
 # Ejecutar estos comandos en tu terminal:
 git remote add origin https://github.com/TU_USUARIO/app-conductores.git
@@ -27,6 +30,7 @@ git push -u origin main
 ```
 
 ### **Paso 3: Crear Azure Static Web App**
+
 1. Ve a [Azure Portal](https://portal.azure.com)
 2. Clic "Create a resource" → "Static Web App"
 3. Configuración:
@@ -47,9 +51,11 @@ git push -u origin main
 4. Clic "Review + create" → "Create"
 
 ### **Paso 4: Configurar GitHub Secret (Automático)**
+
 Azure creará automáticamente el secret `AZURE_STATIC_WEB_APPS_API_TOKEN` en tu repositorio.
 
 ### **Paso 5: Verificar Deployment**
+
 1. Azure iniciará el deployment automáticamente
 2. Ve a GitHub → Tu repositorio → Actions tab
 3. Verás el workflow ejecutándose
@@ -58,17 +64,19 @@ Azure creará automáticamente el secret `AZURE_STATIC_WEB_APPS_API_TOKEN` en tu
 ## 📊 **Configuración Actual del Proyecto:**
 
 ### **Next.js Static Export:**
+
 ```javascript
 // next.config.js
 module.exports = {
-  output: 'export',
-  distDir: 'dist',
+  output: "export",
+  distDir: "dist",
   trailingSlash: true,
-  images: { unoptimized: true }
-}
+  images: { unoptimized: true },
+};
 ```
 
 ### **Azure SWA Configuration:**
+
 ```json
 // staticwebapp.config.json
 {
@@ -79,6 +87,7 @@ module.exports = {
 ```
 
 ### **GitHub Actions Workflow:**
+
 - ✅ Build automático en cada push a `main`
 - ✅ Preview deployments para Pull Requests
 - ✅ Cleanup automático cuando se cierran PRs
@@ -112,6 +121,7 @@ swa deploy --print-token
 ## 🌐 **URLs Esperadas:**
 
 Después del deployment tendrás:
+
 - **Producción:** `https://app-conductores-swa.azurestaticapps.net`
 - **Custom Domain:** Configurable desde Azure Portal
 - **PR Previews:** URLs automáticas para cada PR
@@ -127,6 +137,7 @@ Después del deployment tendrás:
 ## 📱 **PWA Ready:**
 
 Tu app incluye:
+
 - ✅ Service Worker configurado
 - ✅ Manifest.json completo
 - ✅ Iconos para todas las plataformas

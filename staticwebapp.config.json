@@ -5,7 +5,7 @@
       "rewrite": "/admin/index.html"
     },
     {
-      "route": "/diagnostico*", 
+      "route": "/diagnostico*",
       "rewrite": "/diagnostico/index.html"
     },
     {

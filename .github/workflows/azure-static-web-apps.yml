@@ -12,7 +12,7 @@ on:
 
 # Environment variables for the workflow
 env:
-  NODE_VERSION: '20.x'
+  NODE_VERSION: "20.x"
   NEXT_TELEMETRY_DISABLED: 1
   NODE_ENV: production
 
@@ -25,7 +25,7 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: 🔨 Build and Deploy Job
-    
+
     steps:
       # ✅ Checkout the repository
       - name: 📁 Checkout Repository
@@ -39,20 +39,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       # ✅ Install dependencies with cache
       - name: 📦 Install Dependencies
         run: |
           npm ci --prefer-offline --no-audit --progress=false
-          
+
       # ✅ Build the application
       - name: 🏗️ Build Next.js Application
         run: |
           echo "🔧 Building production application..."
           npm run build
           echo "✅ Build completed successfully!"
-          
+
       # ✅ List build output for verification
       - name: 📋 Verify Build Output
         run: |
@@ -61,7 +61,7 @@ jobs:
           echo "📁 Total files: $(find dist/ -type f | wc -l)"
           echo "💾 Total size: $(du -sh dist/)"
 
-      # 🚀 Deploy to Azure Static Web Apps  
+      # 🚀 Deploy to Azure Static Web Apps
       - name: 🌐 Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -76,7 +76,7 @@ jobs:
           # Build configuration
           app_build_command: "npm run build"
           skip_app_build: true # We already built above
-          
+
       # ✅ Post-deployment verification
       - name: 🔍 Post-Deploy Verification
         if: steps.builddeploy.outputs.static_web_app_url
@@ -92,24 +92,23 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: 🧹 Close Pull Request Job
-    
+
     steps:
       - name: 🗑️ Close Pull Request
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "close"
-
 # ==================================================
 # 📊 Workflow Metadata
 # ==================================================
 # This workflow automatically:
 # 1. ✅ Builds Next.js app on every push/PR
 # 2. 🚀 Deploys to Azure SWA on main branch
-# 3. 🔍 Creates preview deployments for PRs  
+# 3. 🔍 Creates preview deployments for PRs
 # 4. 🧹 Cleans up PR deployments when closed
 # 5. 📊 Provides deployment URLs and verification
-# 
+#
 # Requirements:
 # - AZURE_STATIC_WEB_APPS_API_TOKEN secret configured
 # - Node.js 20.x compatible build process

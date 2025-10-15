@@ -216,7 +216,8 @@ const initialState: AppState = {
 // ✅ OPTIMIZACIÓN: Helper functions para eliminar código duplicado
 const createEntityHandlers = <T extends { id: string } | { uid: string }>(
   stateKey: keyof AppState,
-  getKey: (entity: T) => string = (entity) => 'id' in entity ? entity.id : (entity as any).uid
+  getKey: (entity: T) => string = (entity) =>
+    "id" in entity ? entity.id : (entity as any).uid
 ) => ({
   set: (state: AppState, payload: Record<string, T>) => ({
     ...state,
@@ -237,7 +238,9 @@ const createEntityHandlers = <T extends { id: string } | { uid: string }>(
     },
   }),
   delete: (state: AppState, entityId: string) => {
-    const { [entityId]: deleted, ...remaining } = state[stateKey] as unknown as Record<string, T>;
+    const { [entityId]: deleted, ...remaining } = state[
+      stateKey
+    ] as unknown as Record<string, T>;
     return {
       ...state,
       [stateKey]: remaining,
@@ -246,13 +249,13 @@ const createEntityHandlers = <T extends { id: string } | { uid: string }>(
 });
 
 // ===== ENTITY HANDLERS =====
-const territoryHandlers = createEntityHandlers<Territory>('territories');
-const blockHandlers = createEntityHandlers<Block>('blocks');
-const addressHandlers = createEntityHandlers<Address>('addresses');
-const phoneHandlers = createEntityHandlers<PhoneNumber>('phoneNumbers');
-const userHandlers = createEntityHandlers<AppUser>('users', (user) => user.uid);
-const conductorHandlers = createEntityHandlers<Conductor>('conductores');
-const assignmentHandlers = createEntityHandlers<Assignment>('assignments');
+const territoryHandlers = createEntityHandlers<Territory>("territories");
+const blockHandlers = createEntityHandlers<Block>("blocks");
+const addressHandlers = createEntityHandlers<Address>("addresses");
+const phoneHandlers = createEntityHandlers<PhoneNumber>("phoneNumbers");
+const userHandlers = createEntityHandlers<AppUser>("users", (user) => user.uid);
+const conductorHandlers = createEntityHandlers<Conductor>("conductores");
+const assignmentHandlers = createEntityHandlers<Assignment>("assignments");
 
 // ===== REDUCER =====
 function appReducer(state: AppState, action: AppAction): AppState {

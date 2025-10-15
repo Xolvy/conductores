@@ -415,16 +415,58 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
   // Render functions
   const renderNavigation = () => {
     const menuItems = [
-      { id: "dashboard", label: "Dashboard", icon: "📊", description: "Vista general del sistema" },
-      { id: "territories", label: "Territorios", icon: "🗺️", description: "Gestión de territorios" },
+      {
+        id: "dashboard",
+        label: "Dashboard",
+        icon: "📊",
+        description: "Vista general del sistema",
+      },
+      {
+        id: "territories",
+        label: "Territorios",
+        icon: "🗺️",
+        description: "Gestión de territorios",
+      },
       ...(checkUserPermission("users.read")
-        ? [{ id: "users", label: "Usuarios", icon: "👥", description: "Administrar usuarios" }]
+        ? [
+            {
+              id: "users",
+              label: "Usuarios",
+              icon: "👥",
+              description: "Administrar usuarios",
+            },
+          ]
         : []),
-      { id: "assignments", label: "Asignaciones", icon: "📋", description: "Gestión de asignaciones" },
-      { id: "phones", label: "Teléfonos", icon: "📞", description: "Números telefónicos" },
-      { id: "statistics", label: "Estadísticas", icon: "📈", description: "Análisis y reportes" },
-      { id: "tools", label: "Herramientas", icon: "🔧", description: "Exportación y utilidades" },
-      { id: "settings", label: "Configuración", icon: "⚙️", description: "Configuración del sistema" },
+      {
+        id: "assignments",
+        label: "Asignaciones",
+        icon: "📋",
+        description: "Gestión de asignaciones",
+      },
+      {
+        id: "phones",
+        label: "Teléfonos",
+        icon: "📞",
+        description: "Números telefónicos",
+      },
+      {
+        id: "statistics",
+        label: "Estadísticas",
+        icon: "📈",
+        description: "Análisis y reportes",
+      },
+      {
+        id: "tools",
+        label: "Herramientas",
+        icon: "🔧",
+        description: "Exportación y utilidades",
+      },
+      {
+        id: "settings",
+        label: "Configuración",
+        icon: "⚙️",
+        description: "Configuración del sistema",
+      },
     ];
 
     return (
@@ -434,16 +476,30 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center space-x-4">
               <div className="bg-blue-600 p-3 rounded-xl shadow-md">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
                 </svg>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Panel de Administración</h1>
-                <p className="text-sm text-gray-600">Sistema de Gestión Territorial</p>
+                <h1 className="text-xl font-bold text-gray-900">
+                  Panel de Administración
+                </h1>
+                <p className="text-sm text-gray-600">
+                  Sistema de Gestión Territorial
+                </p>
               </div>
             </div>
-            
+
             {/* Quick Actions */}
             <div className="flex items-center space-x-3">
               <div className="relative">
@@ -454,23 +510,43 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm"
                 />
-                <svg className="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-5 h-5 text-gray-400 absolute left-3 top-2.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               </div>
-              
+
               <button
                 onClick={() => window.location.reload()}
                 className="p-2 text-gray-600 hover:text-blue-600 hover:bg-white rounded-lg transition-colors"
                 title="Actualizar"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
                 </svg>
               </button>
             </div>
           </div>
-          
+
           {/* Navigation Tabs */}
           <div className="flex space-x-1 pb-4">
             {menuItems.map((item) => (
@@ -506,12 +582,20 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard Administrativo</h1>
-              <p className="text-lg text-gray-600">Bienvenido al panel de control del sistema</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                Dashboard Administrativo
+              </h1>
+              <p className="text-lg text-gray-600">
+                Bienvenido al panel de control del sistema
+              </p>
             </div>
             <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-xl shadow-lg">
-              <div className="text-2xl font-bold">{new Date().toLocaleDateString()}</div>
-              <div className="text-sm opacity-90">Última actualización: {new Date().toLocaleTimeString()}</div>
+              <div className="text-2xl font-bold">
+                {new Date().toLocaleDateString()}
+              </div>
+              <div className="text-sm opacity-90">
+                Última actualización: {new Date().toLocaleTimeString()}
+              </div>
             </div>
           </div>
         </div>
@@ -524,11 +608,21 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
               <div className="bg-blue-100 p-3 rounded-xl">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                <svg
+                  className="w-6 h-6 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                  />
                 </svg>
               </div>
-              <button 
+              <button
                 onClick={() => setCurrentView("territories")}
                 className="text-blue-600 hover:text-blue-700 font-medium text-sm"
               >
@@ -536,11 +630,20 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
               </button>
             </div>
             <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Territorios</h3>
-              <p className="text-3xl font-bold text-gray-900 mb-2">{stats.territories.total}</p>
+              <h3 className="text-sm font-medium text-gray-600 mb-1">
+                Territorios
+              </h3>
+              <p className="text-3xl font-bold text-gray-900 mb-2">
+                {stats.territories.total}
+              </p>
               <div className="flex items-center space-x-4 text-sm">
-                <span className="text-green-600 font-medium">✓ {stats.territories.active} activos</span>
-                <span className="text-gray-500">• {stats.territories.total - stats.territories.active} inactivos</span>
+                <span className="text-green-600 font-medium">
+                  ✓ {stats.territories.active} activos
+                </span>
+                <span className="text-gray-500">
+                  • {stats.territories.total - stats.territories.active}{" "}
+                  inactivos
+                </span>
               </div>
             </div>
           </div>
@@ -549,11 +652,21 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-green-100 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
               <div className="bg-green-100 p-3 rounded-xl">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                <svg
+                  className="w-6 h-6 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                  />
                 </svg>
               </div>
-              <button 
+              <button
                 onClick={() => setCurrentView("users")}
                 className="text-green-600 hover:text-green-700 font-medium text-sm"
               >
@@ -561,11 +674,19 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
               </button>
             </div>
             <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Usuarios</h3>
-              <p className="text-3xl font-bold text-gray-900 mb-2">{stats.users.total}</p>
+              <h3 className="text-sm font-medium text-gray-600 mb-1">
+                Usuarios
+              </h3>
+              <p className="text-3xl font-bold text-gray-900 mb-2">
+                {stats.users.total}
+              </p>
               <div className="flex items-center space-x-4 text-sm">
-                <span className="text-green-600 font-medium">✓ {stats.users.active} activos</span>
-                <span className="text-gray-500">• {stats.users.total - stats.users.active} inactivos</span>
+                <span className="text-green-600 font-medium">
+                  ✓ {stats.users.active} activos
+                </span>
+                <span className="text-gray-500">
+                  • {stats.users.total - stats.users.active} inactivos
+                </span>
               </div>
             </div>
           </div>
@@ -574,11 +695,21 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
               <div className="bg-purple-100 p-3 rounded-xl">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                <svg
+                  className="w-6 h-6 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                  />
                 </svg>
               </div>
-              <button 
+              <button
                 onClick={() => setCurrentView("assignments")}
                 className="text-purple-600 hover:text-purple-700 font-medium text-sm"
               >
@@ -586,11 +717,19 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
               </button>
             </div>
             <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Asignaciones</h3>
-              <p className="text-3xl font-bold text-gray-900 mb-2">{stats.assignments.active}</p>
+              <h3 className="text-sm font-medium text-gray-600 mb-1">
+                Asignaciones
+              </h3>
+              <p className="text-3xl font-bold text-gray-900 mb-2">
+                {stats.assignments.active}
+              </p>
               <div className="flex items-center space-x-4 text-sm">
-                <span className="text-green-600 font-medium">✓ {stats.assignments.completed} completadas</span>
-                <span className="text-gray-500">• {stats.assignments.active} activas</span>
+                <span className="text-green-600 font-medium">
+                  ✓ {stats.assignments.completed} completadas
+                </span>
+                <span className="text-gray-500">
+                  • {stats.assignments.active} activas
+                </span>
               </div>
             </div>
           </div>
@@ -599,11 +738,21 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
               <div className="bg-orange-100 p-3 rounded-xl">
-                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                <svg
+                  className="w-6 h-6 text-orange-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
                 </svg>
               </div>
-              <button 
+              <button
                 onClick={() => setCurrentView("phones")}
                 className="text-orange-600 hover:text-orange-700 font-medium text-sm"
               >
@@ -611,11 +760,19 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
               </button>
             </div>
             <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Teléfonos</h3>
-              <p className="text-3xl font-bold text-gray-900 mb-2">{stats.phones.total}</p>
+              <h3 className="text-sm font-medium text-gray-600 mb-1">
+                Teléfonos
+              </h3>
+              <p className="text-3xl font-bold text-gray-900 mb-2">
+                {stats.phones.total}
+              </p>
               <div className="flex items-center space-x-4 text-sm">
-                <span className="text-green-600 font-medium">✓ {stats.phones.contacted} contactados</span>
-                <span className="text-gray-500">• {stats.phones.total - stats.phones.contacted} pendientes</span>
+                <span className="text-green-600 font-medium">
+                  ✓ {stats.phones.contacted} contactados
+                </span>
+                <span className="text-gray-500">
+                  • {stats.phones.total - stats.phones.contacted} pendientes
+                </span>
               </div>
             </div>
           </div>
@@ -626,8 +783,12 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           {/* Quick Actions */}
           <div className="bg-white rounded-2xl shadow-sm border">
             <div className="p-6 border-b border-gray-100">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">🚀 Acciones Rápidas</h2>
-              <p className="text-gray-600">Operaciones más frecuentes del sistema</p>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                🚀 Acciones Rápidas
+              </h2>
+              <p className="text-gray-600">
+                Operaciones más frecuentes del sistema
+              </p>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -639,9 +800,15 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
                   className="group p-4 border-2 border-dashed border-gray-200 rounded-xl hover:border-blue-300 hover:bg-blue-50 transition-all"
                 >
                   <div className="text-center">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">🗺️</div>
-                    <p className="font-semibold text-gray-900 mb-1">Crear Territorio</p>
-                    <p className="text-sm text-gray-500">Agregar nuevo territorio al sistema</p>
+                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">
+                      🗺️
+                    </div>
+                    <p className="font-semibold text-gray-900 mb-1">
+                      Crear Territorio
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Agregar nuevo territorio al sistema
+                    </p>
                   </div>
                 </button>
 
@@ -654,9 +821,15 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
                   className="group p-4 border-2 border-dashed border-gray-200 rounded-xl hover:border-green-300 hover:bg-green-50 transition-all"
                 >
                   <div className="text-center">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">👤</div>
-                    <p className="font-semibold text-gray-900 mb-1">Crear Usuario</p>
-                    <p className="text-sm text-gray-500">Agregar nuevo usuario al sistema</p>
+                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">
+                      👤
+                    </div>
+                    <p className="font-semibold text-gray-900 mb-1">
+                      Crear Usuario
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Agregar nuevo usuario al sistema
+                    </p>
                   </div>
                 </button>
 
@@ -668,9 +841,15 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
                   className="group p-4 border-2 border-dashed border-gray-200 rounded-xl hover:border-orange-300 hover:bg-orange-50 transition-all"
                 >
                   <div className="text-center">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">📞</div>
-                    <p className="font-semibold text-gray-900 mb-1">Importar Teléfonos</p>
-                    <p className="text-sm text-gray-500">Importación masiva de números</p>
+                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">
+                      📞
+                    </div>
+                    <p className="font-semibold text-gray-900 mb-1">
+                      Importar Teléfonos
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Importación masiva de números
+                    </p>
                   </div>
                 </button>
 
@@ -679,8 +858,12 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
                   className="group p-4 border-2 border-dashed border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition-all"
                 >
                   <div className="text-center">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">📈</div>
-                    <p className="font-semibold text-gray-900 mb-1">Ver Estadísticas</p>
+                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">
+                      📈
+                    </div>
+                    <p className="font-semibold text-gray-900 mb-1">
+                      Ver Estadísticas
+                    </p>
                     <p className="text-sm text-gray-500">Análisis y reportes</p>
                   </div>
                 </button>
@@ -691,39 +874,69 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           {/* Recent Activity Panel */}
           <div className="bg-white rounded-2xl shadow-sm border">
             <div className="p-6 border-b border-gray-100">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">📋 Actividad Reciente</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                📋 Actividad Reciente
+              </h2>
               <p className="text-gray-600">Últimas acciones en el sistema</p>
             </div>
             <div className="p-6">
               <div className="space-y-4">
                 <div className="flex items-center space-x-4 p-3 bg-blue-50 rounded-lg">
                   <div className="bg-blue-100 p-2 rounded-full">
-                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    <svg
+                      className="w-4 h-4 text-blue-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">Sistema inicializado</p>
-                    <p className="text-xs text-gray-500">Panel administrativo cargado correctamente</p>
+                    <p className="text-sm font-medium text-gray-900">
+                      Sistema inicializado
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Panel administrativo cargado correctamente
+                    </p>
                   </div>
                   <span className="text-xs text-gray-400">Ahora</span>
                 </div>
 
                 <div className="flex items-center space-x-4 p-3 bg-green-50 rounded-lg">
                   <div className="bg-green-100 p-2 rounded-full">
-                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-4 h-4 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">Estadísticas actualizadas</p>
-                    <p className="text-xs text-gray-500">Datos del sistema sincronizados</p>
+                    <p className="text-sm font-medium text-gray-900">
+                      Estadísticas actualizadas
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Datos del sistema sincronizados
+                    </p>
                   </div>
                   <span className="text-xs text-gray-400">Hace 1 min</span>
                 </div>
 
                 <div className="flex items-center justify-center py-4">
-                  <button 
+                  <button
                     onClick={() => setCurrentView("statistics")}
                     className="text-blue-600 hover:text-blue-700 font-medium text-sm"
                   >
@@ -738,22 +951,26 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
         {/* System Status */}
         <div className="bg-white rounded-2xl shadow-sm border">
           <div className="p-6 border-b border-gray-100">
-            <h2 className="text-xl font-bold text-gray-900 mb-2">🛡️ Estado del Sistema</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">
+              🛡️ Estado del Sistema
+            </h2>
           </div>
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-green-50 rounded-xl">
                 <div className="text-2xl mb-2">✅</div>
                 <div className="font-medium text-green-700">Sistema Activo</div>
-                <div className="text-sm text-green-600">Funcionando correctamente</div>
+                <div className="text-sm text-green-600">
+                  Funcionando correctamente
+                </div>
               </div>
-              
+
               <div className="text-center p-4 bg-blue-50 rounded-xl">
                 <div className="text-2xl mb-2">🔄</div>
                 <div className="font-medium text-blue-700">Sincronización</div>
                 <div className="text-sm text-blue-600">Datos actualizados</div>
               </div>
-              
+
               <div className="text-center p-4 bg-purple-50 rounded-xl">
                 <div className="text-2xl mb-2">🎯</div>
                 <div className="font-medium text-purple-700">Rendimiento</div>
@@ -1524,25 +1741,43 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
     <div className="bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto p-6">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">� Herramientas Avanzadas</h1>
-          <p className="text-lg text-gray-600">Exportación de datos y utilidades del sistema</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            � Herramientas Avanzadas
+          </h1>
+          <p className="text-lg text-gray-600">
+            Exportación de datos y utilidades del sistema
+          </p>
         </div>
-        
+
         <div className="space-y-8">
           <ExportTools />
-          
+
           {/* Quick Actions Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-2xl shadow-sm border p-6 hover:shadow-md transition-shadow">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="bg-blue-100 p-3 rounded-xl">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  <svg
+                    className="w-6 h-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">Backup Sistema</h3>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Backup Sistema
+                </h3>
               </div>
-              <p className="text-gray-600 mb-4">Crear respaldo completo de todos los datos del sistema</p>
+              <p className="text-gray-600 mb-4">
+                Crear respaldo completo de todos los datos del sistema
+              </p>
               <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                 Crear Backup
               </button>
@@ -1551,13 +1786,27 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
             <div className="bg-white rounded-2xl shadow-sm border p-6 hover:shadow-md transition-shadow">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="bg-green-100 p-3 rounded-xl">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg
+                    className="w-6 h-6 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">Validar Datos</h3>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Validar Datos
+                </h3>
               </div>
-              <p className="text-gray-600 mb-4">Verificar integridad y consistencia de datos</p>
+              <p className="text-gray-600 mb-4">
+                Verificar integridad y consistencia de datos
+              </p>
               <button className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
                 Ejecutar Validación
               </button>
@@ -1566,13 +1815,27 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
             <div className="bg-white rounded-2xl shadow-sm border p-6 hover:shadow-md transition-shadow">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="bg-purple-100 p-3 rounded-xl">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                  <svg
+                    className="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">Optimización</h3>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Optimización
+                </h3>
               </div>
-              <p className="text-gray-600 mb-4">Optimizar rendimiento y limpiar datos obsoletos</p>
+              <p className="text-gray-600 mb-4">
+                Optimizar rendimiento y limpiar datos obsoletos
+              </p>
               <button className="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
                 Optimizar Sistema
               </button>
@@ -1582,26 +1845,42 @@ const UnifiedAdminPanel: React.FC<UnifiedAdminPanelProps> = ({ className }) => {
           {/* System Information */}
           <div className="bg-white rounded-2xl shadow-sm border">
             <div className="p-6 border-b border-gray-100">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">� Información del Sistema</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                � Información del Sistema
+              </h2>
               <p className="text-gray-600">Estado actual y detalles técnicos</p>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">v2.1.0</div>
-                  <div className="text-sm text-gray-600">Versión del Sistema</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-1">
+                    v2.1.0
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    Versión del Sistema
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-1">99.9%</div>
+                  <div className="text-2xl font-bold text-green-600 mb-1">
+                    99.9%
+                  </div>
                   <div className="text-sm text-gray-600">Tiempo Activo</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-1">{new Date().toLocaleDateString()}</div>
-                  <div className="text-sm text-gray-600">Última Actualización</div>
+                  <div className="text-2xl font-bold text-purple-600 mb-1">
+                    {new Date().toLocaleDateString()}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    Última Actualización
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600 mb-1">PWA</div>
-                  <div className="text-sm text-gray-600">Tipo de Aplicación</div>
+                  <div className="text-2xl font-bold text-orange-600 mb-1">
+                    PWA
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    Tipo de Aplicación
+                  </div>
                 </div>
               </div>
             </div>

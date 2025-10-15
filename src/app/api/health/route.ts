@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Configuración para exportación estática
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 // Health check endpoint para Docker y monitoreo
 export async function GET(request: NextRequest) {

@@ -3,7 +3,7 @@ import AdminAuthService from "../../../../lib/admin-auth";
 import { getProjectInfo } from "../../../../lib/firebase-admin";
 
 // Configuración para exportación estática
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 /**
  * API route para verificar el estado de Firebase Admin SDK

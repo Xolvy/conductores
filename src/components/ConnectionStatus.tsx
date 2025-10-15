@@ -8,7 +8,9 @@ interface ReadonlyConnectionStatusProps {
   readonly onRetry?: () => void;
 }
 
-export default function ConnectionStatus({ onRetry }: ReadonlyConnectionStatusProps) {
+export default function ConnectionStatus({
+  onRetry,
+}: ReadonlyConnectionStatusProps) {
   const [connectionStatus, setConnectionStatus] = useState<
     "checking" | "connected" | "blocked" | "offline" | "error"
   >("checking");

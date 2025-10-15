@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import admin from "firebase-admin";
 
 // Configuración para exportación estática
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 let initialized = false;
 

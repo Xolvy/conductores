@@ -11,18 +11,21 @@
 ## ✨ **Características Principales**
 
 ### 🎯 **Gestión de Territorios**
+
 - **Asignación inteligente** de territorios por conductor
 - **Seguimiento en tiempo real** del progreso
 - **Programación flexible** de turnos y horarios
 - **Visualización interactiva** de mapas y estadísticas
 
 ### 📞 **Predicación Telefónica**
+
 - **Gestión completa** de números telefónicos
 - **Seguimiento de llamadas** y resultados
 - **Reportes automáticos** de actividad
 - **Sistema offline-first** para uso sin conexión
 
 ### 👥 **Panel Administrativo**
+
 - **Gestión de usuarios** y permisos
 - **Dashboard analítico** con métricas clave
 - **Configuración avanzada** del sistema
@@ -45,12 +48,14 @@
 ## 🚀 **Deployment y Configuración**
 
 ### **Deployment Automático (Azure SWA)**
+
 1. Fork este repositorio
 2. Crea un recurso Azure Static Web App
 3. Conecta con tu fork de GitHub
 4. ¡El deployment se hace automáticamente!
 
 ### **Configuración Local**
+
 ```bash
 # Clonar el repositorio
 git clone https://github.com/TU_USUARIO/app-conductores.git
@@ -72,6 +77,7 @@ npm run export && swa start ./dist
 ## 📱 **PWA Ready**
 
 La aplicación está optimizada como **Progressive Web App**:
+
 - ✅ **Instalable** desde cualquier navegador
 - ✅ **Funciona offline** con Service Worker
 - ✅ **Responsive design** para móvil y desktop
@@ -123,12 +129,14 @@ First Load: <3 segundos
 ## 📋 **Roadmap**
 
 ### **v2.0 (Q1 2026)**
+
 - [ ] 🔄 Sincronización cloud opcional
 - [ ] 📊 Analytics avanzados con IA
 - [ ] 🌍 Soporte multi-idioma
 - [ ] 📱 App móvil nativa
 
 ### **v1.1 (Próximo)**
+
 - [ ] 🔔 Notificaciones push
 - [ ] 📈 Métricas de rendimiento
 - [ ] 🎨 Temas personalizables
@@ -158,7 +166,7 @@ Este proyecto está bajo la licencia MIT. Ver [LICENSE](LICENSE) para más detal
 
 **Desarrollado con ❤️ para la comunidad**
 
-*Sistema de gestión que simplifica la organización territorial y optimiza la predicación telefónica*
+_Sistema de gestión que simplifica la organización territorial y optimiza la predicación telefónica_
 
 [🌐 Demo Live](https://app-conductores-swa.azurestaticapps.net) • [📖 Documentación](docs/) • [🚀 Deploy](https://portal.azure.com/#create/Microsoft.StaticApp)
 

@@ -34,7 +34,9 @@ interface ReadonlyToastProviderProps {
   readonly children: ReactNode;
 }
 
-export const ToastProvider: React.FC<ReadonlyToastProviderProps> = ({ children }) => {
+export const ToastProvider: React.FC<ReadonlyToastProviderProps> = ({
+  children,
+}) => {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   const generateId = (): string => {

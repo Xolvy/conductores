@@ -74,19 +74,25 @@ interface FuturisticAppState {
 // Componentes simulados para demostración
 const Web3Connector = () => (
   <div className="bg-gradient-to-r from-blue-400 to-purple-500 h-32 rounded-lg p-4 flex items-center justify-center">
-    <span className="text-white font-semibold">Web3 Connector - Demo Component</span>
+    <span className="text-white font-semibold">
+      Web3 Connector - Demo Component
+    </span>
   </div>
 );
 
 const AIAnalyticsDashboard = () => (
   <div className="bg-gradient-to-r from-green-400 to-blue-500 h-48 rounded-lg p-4 flex items-center justify-center">
-    <span className="text-white font-semibold">AI Analytics Dashboard - Demo Component</span>
+    <span className="text-white font-semibold">
+      AI Analytics Dashboard - Demo Component
+    </span>
   </div>
 );
 
 const PerformanceMonitor = () => (
   <div className="bg-gradient-to-r from-yellow-400 to-red-500 h-24 rounded-lg p-4 flex items-center justify-center">
-    <span className="text-white font-semibold">Performance Monitor - Demo Component</span>
+    <span className="text-white font-semibold">
+      Performance Monitor - Demo Component
+    </span>
   </div>
 );
 

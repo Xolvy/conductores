@@ -375,7 +375,9 @@
               Abrir Dev Tools
             </button>
             <button class="btn" onclick="openConsole()">Console</button>
-            <button class="btn" onclick="toggleBrowserDiagnostic()">Diagnóstico</button>
+            <button class="btn" onclick="toggleBrowserDiagnostic()">
+              Diagnóstico
+            </button>
           </div>
         </div>
 
@@ -531,18 +533,24 @@
           const iframe = document.getElementById("embeddedApp");
           if (iframe && iframe.contentWindow) {
             // Enviar mensaje al iframe para mostrar/ocultar diagnóstico
-            iframe.contentWindow.postMessage({
-              type: 'TOGGLE_BROWSER_DIAGNOSTIC'
-            }, 'http://localhost:3000');
-            
+            iframe.contentWindow.postMessage(
+              {
+                type: "TOGGLE_BROWSER_DIAGNOSTIC",
+              },
+              "http://localhost:3000"
+            );
+
             showNotification("🔬 Toggle diagnóstico enviado", "info");
             logActivity("Toggle del diagnóstico de navegador activado");
           } else {
-            showNotification("⚠️ Iframe no disponible - abriendo diagnósticos", "warning");
+            showNotification(
+              "⚠️ Iframe no disponible - abriendo diagnósticos",
+              "warning"
+            );
             openDiagnostics();
           }
         } catch (error) {
-          console.error('Error al toggle diagnóstico:', error);
+          console.error("Error al toggle diagnóstico:", error);
           showNotification("❌ Error al toggle diagnóstico", "error");
         }
       }
