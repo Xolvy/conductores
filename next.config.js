@@ -7,7 +7,6 @@ const nextConfig = {
   // 📝 Configuración de rutas
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
-  distDir: "dist",
 
   // 🖼️ Optimización de imágenes
   images: {
