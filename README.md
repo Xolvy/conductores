@@ -171,3 +171,4 @@ _Sistema de gestión que simplifica la organización territorial y optimiza la p
 [🌐 Demo Live](https://app-conductores-swa.azurestaticapps.net) • [📖 Documentación](docs/) • [🚀 Deploy](https://portal.azure.com/#create/Microsoft.StaticApp)
 
 </div>
+# Last updated: 10/14/2025 21:54:51
